@@ -1,160 +1,136 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ADS Propiedades · Agregar proyecto</title>
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
-  <body>
-    <header class="topbar">
-      <div class="topbar__inner">
-        <div class="brand">
-          <div class="brand__title">ADS Propiedades</div>
-          <div class="brand__subtitle">Panel familiar · Agregar proyecto</div>
-        </div>
 
-        <button
-          class="theme-toggle"
-          id="theme-toggle"
-          type="button"
-          aria-label="Cambiar tema"
-          aria-pressed="false"
-        >
-          <span class="theme-toggle__dot" aria-hidden="true"></span>
-          <span class="theme-toggle__text">Oscuro</span>
-        </button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ADS Propiedades · Agregar proyecto</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
 
-        <button
-          class="hamburger"
-          id="hamburger-btn"
-          type="button"
-          aria-label="Abrir menú"
-          aria-expanded="false"
-          aria-controls="topbar-menu"
-        >
-          <span class="hamburger__bar"></span>
-          <span class="hamburger__bar"></span>
-          <span class="hamburger__bar"></span>
-        </button>
-
-        <nav class="menu" id="topbar-menu" aria-label="Navegación principal">
-          <a class="menu__link menu__link--active" href="index.html">Home</a>
-          <a class="menu__link" href="proyectos.html">Proyectos</a>
-          <a class="menu__link" href="evaluacion.html">Evaluación</a>
-        </nav>
+<body>
+  <header class="topbar">
+    <div class="topbar__inner">
+      <div class="brand">
+        <div class="brand__title">ADS Propiedades</div>
+        <div class="brand__subtitle">Panel familiar · Agregar proyecto</div>
       </div>
-    </header>
 
-    <main class="page">
-      <section class="panel">
-        <header class="panel__header">
-          <div>
-            <h1 class="page-title">Agregar nuevo proyecto</h1>
-            <p class="panel__subtitle">
-              Para que cualquier miembro de la familia registre proyectos vistos en
-              Internet o recomendados.
-            </p>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambiar tema" aria-pressed="false">
+        <span class="theme-toggle__dot" aria-hidden="true"></span>
+        <span class="theme-toggle__text">Oscuro</span>
+      </button>
+
+      <button class="hamburger" id="hamburger-btn" type="button" aria-label="Abrir menú" aria-expanded="false"
+        aria-controls="topbar-menu">
+        <span class="hamburger__bar"></span>
+        <span class="hamburger__bar"></span>
+        <span class="hamburger__bar"></span>
+      </button>
+
+      <nav class="menu" id="topbar-menu" aria-label="Navegación principal">
+        <a class="menu__link menu__link--active" href="index.html">Home</a>
+        <a class="menu__link" href="proyectos.html">Proyectos</a>
+        <a class="menu__link" href="evaluacion.html">Evaluación</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="panel">
+      <header class="panel__header">
+        <div>
+          <h1 class="page-title">Agregar nuevo proyecto</h1>
+          <p class="panel__subtitle">
+            Para que cualquier miembro de la familia registre proyectos vistos en
+            Internet o recomendados.
+          </p>
+        </div>
+      </header>
+      <form id="form-nuevo-proyecto" class="form-vertical">
+        <div class="form-group">
+          <label for="np-nombre">Nombre del proyecto *</label>
+          <input type="text" id="np-nombre" required />
+        </div>
+        <div class="form-group">
+          <label for="np-constructora">Constructora</label>
+          <input type="text" id="np-constructora" />
+        </div>
+        <div class="form-group">
+          <label for="np-ciudad">Ciudad *</label>
+          <input type="text" id="np-ciudad" required />
+        </div>
+        <div class="form-group">
+          <label for="np-sector">Sector / Barrio</label>
+          <input type="text" id="np-sector" />
+        </div>
+        <div class="form-group">
+          <label for="np-tipo">Tipo de inmueble</label>
+          <select id="np-tipo">
+            <option value="Apartamento">Apartamento</option>
+            <option value="Casa">Casa</option>
+            <option value="Lote">Lote</option>
+            <option value="Apartaestudio">Apartaestudio</option>
+            <option value="Aparta suite">Aparta suite</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Precio estimado (millones)</label>
+          <div class="range-group">
+            <input type="number" id="np-precio-desde" min="0" step="10" placeholder="Desde" />
+            <span class="range-separator">a</span>
+            <input type="number" id="np-precio-hasta" min="0" step="10" placeholder="Hasta" />
           </div>
-        </header>
-        <form id="form-nuevo-proyecto" class="form-vertical">
-            <div class="form-group">
-              <label for="np-nombre">Nombre del proyecto *</label>
-              <input type="text" id="np-nombre" required />
-            </div>
-            <div class="form-group">
-              <label for="np-constructora">Constructora</label>
-              <input type="text" id="np-constructora" />
-            </div>
-            <div class="form-group">
-              <label for="np-ciudad">Ciudad *</label>
-              <input type="text" id="np-ciudad" required />
-            </div>
-            <div class="form-group">
-              <label for="np-sector">Sector / Barrio</label>
-              <input type="text" id="np-sector" />
-            </div>
-            <div class="form-group">
-              <label for="np-tipo">Tipo de inmueble</label>
-              <select id="np-tipo">
-                <option value="Apartamento">Apartamento</option>
-                <option value="Casa">Casa</option>
-                <option value="Lote">Lote</option>
-                <option value="Apartaestudio">Apartaestudio</option>
-                <option value="Aparta suite">Aparta suite</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Precio estimado (millones)</label>
-              <div class="range-group">
-                <input
-                  type="number"
-                  id="np-precio-desde"
-                  min="0"
-                  step="10"
-                  placeholder="Desde"
-                />
-                <span class="range-separator">a</span>
-                <input
-                  type="number"
-                  id="np-precio-hasta"
-                  min="0"
-                  step="10"
-                  placeholder="Hasta"
-                />
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="np-estrato">Estrato</label>
-              <select id="np-estrato">
-                <option value="">No aplicar</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="np-area">Área (m²)</label>
-              <input type="number" id="np-area" min="0" step="1" />
-            </div>
-            <div class="form-group">
-              <label for="np-estado">Estado de obra</label>
-              <select id="np-estado">
-                <option value="">No especificado</option>
-                <option value="Sobre planos">Sobre planos</option>
-                <option value="En construcción">En construcción</option>
-                <option value="Terminado" selected>Terminado</option>
-                <option value="En lanzamiento">En lanzamiento</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="np-sitio-web">URL del proyecto</label>
-              <input
-                type="url"
-                id="np-sitio-web"
-                placeholder="https://ejemplo.com/proyecto"
-              />
-            </div>
-            <div class="form-group">
-              <label for="np-url-imagen">URL de imagen (opcional)</label>
-              <input type="url" id="np-url-imagen" placeholder="https://..." />
-            </div>
-            <div class="form-actions">
-              <button type="submit" class="btn btn--primary">Guardar</button>
-            </div>
-        </form>
-      </section>
-    </main>
+        </div>
+        <div class="form-group">
+          <label for="np-estrato">Estrato</label>
+          <select id="np-estrato">
+            <option value="">No aplicar</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="np-area">Área (m²)</label>
+          <input type="number" id="np-area" min="0" step="1" />
+        </div>
+        <div class="form-group">
+          <label for="np-estado">Estado de obra</label>
+          <select id="np-estado">
+            <option value="">No especificado</option>
+            <option value="Sobre planos">Sobre planos</option>
+            <option value="En construcción">En construcción</option>
+            <option value="Terminado" selected>Terminado</option>
+            <option value="Terminado" selected>ARRENDADO</option>
+            <option value="Terminado" selected>Arrendar</option>
+            <option value="En lanzamiento">En lanzamiento</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="np-sitio-web">URL del proyecto</label>
+          <input type="url" id="np-sitio-web" placeholder="https://ejemplo.com/proyecto" />
+        </div>
+        <div class="form-group">
+          <label for="np-url-imagen">URL de imagen (opcional)</label>
+          <input type="url" id="np-url-imagen" placeholder="https://..." />
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn--primary">Guardar</button>
+        </div>
+      </form>
+    </section>
+  </main>
 
-    <footer class="app-footer"></footer>
+  <footer class="app-footer"></footer>
 
-    <script src="js/config.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="js/theme.js"></script>
-    <script src="js/nav.js"></script>
-    <script src="js/app.js"></script>
-  </body>
+  <script src="js/config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
 </html>
-
