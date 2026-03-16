@@ -1,123 +1,96 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ADS Propiedades · Evaluación</title>
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
-  <body>
-    <header class="topbar">
-      <div class="topbar__inner">
-        <div class="brand">
-          <div class="brand__title">ADS Propiedades</div>
-          <div class="brand__subtitle">Puntuar proyectos</div>
-        </div>
 
-        <button
-          class="theme-toggle"
-          id="theme-toggle"
-          type="button"
-          aria-label="Cambiar tema"
-          aria-pressed="false"
-        >
-          <span class="theme-toggle__dot" aria-hidden="true"></span>
-          <span class="theme-toggle__text">Oscuro</span>
-        </button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ADS Propiedades · Evaluación</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
 
-        <button
-          class="hamburger"
-          id="hamburger-btn"
-          type="button"
-          aria-label="Abrir menú"
-          aria-expanded="false"
-          aria-controls="topbar-menu"
-        >
-          <span class="hamburger__bar"></span>
-          <span class="hamburger__bar"></span>
-          <span class="hamburger__bar"></span>
-        </button>
-
-        <nav class="menu" id="topbar-menu" aria-label="Navegación principal">
-          <a class="menu__link" href="index.html">Home</a>
-          <a class="menu__link" href="proyectos.html">Proyectos</a>
-          <a class="menu__link menu__link--active" href="evaluacion.html"
-            >Evaluación</a
-          >
-        </nav>
+<body>
+  <header class="topbar">
+    <div class="topbar__inner">
+      <div class="brand">
+        <div class="brand__title">ADS Propiedades</div>
+        <div class="brand__subtitle">Puntuar proyectos</div>
       </div>
-    </header>
 
-    <main class="page">
-      <section class="panel">
-        <header class="panel__header">
-          <div>
-            <h1 class="page-title">Puntuar proyecto en familia</h1>
-            <p class="panel__subtitle">
-              Selecciona un proyecto, registra quién evalúa y guarda la puntuación (1–5).
-            </p>
-          </div>
-        </header>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambiar tema" aria-pressed="false">
+        <span class="theme-toggle__dot" aria-hidden="true"></span>
+        <span class="theme-toggle__text">Oscuro</span>
+      </button>
 
-        <form id="form-evaluacion" class="form-vertical">
-          <div class="form-group">
-            <label for="ev-proyecto">Proyecto *</label>
-            <select id="ev-proyecto" required>
-              <option value="">Selecciona un proyecto</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="ev-miembro">Miembro de la familia *</label>
-            <input
-              type="text"
-              id="ev-miembro"
-              placeholder="Ej: Papá, Mamá, Juan..."
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="ev-puntuacion">Puntuación general (1 a 5) *</label>
-            <input
-              type="number"
-              id="ev-puntuacion"
-              min="1"
-              max="5"
-              step="1"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="ev-comentario">Comentario</label>
-            <textarea
-              id="ev-comentario"
-              rows="3"
-              placeholder="Puntos fuertes, debilidades, dudas..."
-            ></textarea>
-          </div>
-          <div class="form-group form-group--checkbox">
-            <label>
-              <input type="checkbox" id="ev-interes-final" checked />
-              Mantener este proyecto en análisis (no descartarlo)
-            </label>
-          </div>
-          <div class="form-actions">
-            <button type="submit" class="btn btn--secondary">Guardar evaluación</button>
-          </div>
-          <p class="form-helper">
-            Nota: esta acción creará un registro en la tabla
-            <code>evaluacion_familiar</code> de Supabase.
+      <button class="hamburger" id="hamburger-btn" type="button" aria-label="Abrir menú" aria-expanded="false"
+        aria-controls="topbar-menu">
+        <span class="hamburger__bar"></span>
+        <span class="hamburger__bar"></span>
+        <span class="hamburger__bar"></span>
+      </button>
+
+      <nav class="menu" id="topbar-menu" aria-label="Navegación principal">
+        <a class="menu__link" href="index.html">Home</a>
+        <a class="menu__link" href="proyectos.html">Proyectos</a>
+        <a class="menu__link menu__link--active" href="evaluacion.html">Evaluación</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="panel">
+      <header class="panel__header">
+        <div>
+          <h1 class="page-title">Puntuar proyecto en familia</h1>
+          <p class="panel__subtitle">
+            Selecciona un proyecto, registra quién evalúa y guarda la puntuación (1–5).
           </p>
-        </form>
-      </section>
-    </main>
+        </div>
+      </header>
 
-    <footer class="app-footer"></footer>
+      <form id="form-evaluacion" class="form-vertical">
+        <div class="form-group">
+          <label for="ev-proyecto">Proyecto *</label>
+          <select id="ev-proyecto" required>
+            <option value="">Selecciona un proyecto</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="ev-miembro">Miembro de la familia *</label>
+          <select id="ev-miembro" required>
+            <option value="">Selecciona tu nombre</option>
+            <option value="Harrisson">Harrisson</option>
+            <option value="Zoraida">Zoraida</option>
+            <option value="Sebastian">Sebastian</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="ev-puntuacion">Puntuación general (1 a 5) *</label>
+          <input type="number" id="ev-puntuacion" min="1" max="5" step="1" required />
+        </div>
+        <div class="form-group">
+          <label for="ev-comentario">Comentario</label>
+          <textarea id="ev-comentario" rows="3" placeholder="Puntos fuertes, debilidades, dudas..."></textarea>
+        </div>
+        <div class="form-group form-group--checkbox">
+          <label>
+            <input type="checkbox" id="ev-interes-final" checked />
+            Mantener este proyecto en análisis (no descartarlo)
+          </label>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn--secondary">Guardar evaluación</button>
+        </div>
+      </form>
+    </section>
+  </main>
 
-    <script src="js/config.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="js/theme.js"></script>
-    <script src="js/nav.js"></script>
-    <script src="js/app.js"></script>
-  </body>
+  <footer class="app-footer"></footer>
+
+  <script src="js/config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
 </html>
-

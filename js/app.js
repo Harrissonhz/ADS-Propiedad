@@ -585,6 +585,14 @@ async function manejarEvaluacion(event) {
   (event.target || document.getElementById('form-evaluacion')).reset();
   document.getElementById('ev-proyecto').value = proyectoId;
 
+  const miembroSelect = document.getElementById('ev-miembro');
+  if (miembroSelect) {
+    const miembroGuardado = localStorage.getItem('ads_miembro_familia');
+    if (miembroGuardado) {
+      miembroSelect.value = miembroGuardado;
+    }
+  }
+
   await cargarProyectos();
   alert('Evaluación registrada correctamente.');
 }
@@ -700,6 +708,17 @@ function initEventos() {
 
   if (formEvaluacion) {
     formEvaluacion.addEventListener('submit', manejarEvaluacion);
+
+    const selectMiembro = document.getElementById('ev-miembro');
+    if (selectMiembro) {
+      const miembroGuardado = localStorage.getItem('ads_miembro_familia');
+      if (miembroGuardado) {
+        selectMiembro.value = miembroGuardado;
+      }
+      selectMiembro.addEventListener('change', (e) => {
+        localStorage.setItem('ads_miembro_familia', e.target.value);
+      });
+    }
   }
 
   if (tabla) {
