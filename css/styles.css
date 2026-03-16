@@ -341,6 +341,11 @@ main {
   align-items: center;
 }
 
+.range-group input {
+  min-width: 0;
+  width: 100%;
+}
+
 .range-separator {
   color: var(--text-muted);
   font-size: 0.8rem;
@@ -351,6 +356,7 @@ input[type='number'],
 input[type='url'],
 select,
 textarea {
+  width: 100%;
   background: var(--surface);
   border-radius: var(--radius-md);
   border: 1px solid var(--border-strong);
@@ -486,12 +492,10 @@ textarea {
 }
 
 .projects-table thead {
-  background: linear-gradient(
-    90deg,
-    rgba(15, 23, 42, 0.95),
-    rgba(15, 23, 42, 0.85),
-    rgba(30, 64, 175, 0.9)
-  );
+  background: linear-gradient(90deg,
+      rgba(15, 23, 42, 0.95),
+      rgba(15, 23, 42, 0.85),
+      rgba(30, 64, 175, 0.9));
 }
 
 .projects-table th,
@@ -811,4 +815,3 @@ textarea {
     padding: 0.25rem 0.7rem;
   }
 }
-
