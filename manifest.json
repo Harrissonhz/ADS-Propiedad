@@ -1,0 +1,17 @@
+{
+  "name": "ADS Propiedades Familia",
+  "short_name": "ADS Prop",
+  "description": "Panel familiar para evaluación de proyectos inmobiliarios",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#38bdf8",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/602/602271.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

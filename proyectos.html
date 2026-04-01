@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ADS Propiedades · Proyectos</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#38bdf8" />
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('sw.js');
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar__inner">
+        <div class="brand">
+          <div class="brand__title">ADS Propiedades</div>
+          <div class="brand__subtitle">Listado + filtros</div>
+        </div>
+
+        <button
+          class="theme-toggle"
+          id="theme-toggle"
+          type="button"
+          aria-label="Cambiar tema"
+          aria-pressed="false"
+        >
+          <span class="theme-toggle__dot" aria-hidden="true"></span>
+          <span class="theme-toggle__text">Oscuro</span>
+        </button>
+
+        <button
+          class="hamburger"
+          id="hamburger-btn"
+          type="button"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+          aria-controls="topbar-menu"
+        >
+          <span class="hamburger__bar"></span>
+          <span class="hamburger__bar"></span>
+          <span class="hamburger__bar"></span>
+        </button>
+
+        <nav class="menu" id="topbar-menu" aria-label="Navegación principal">
+          <a class="menu__link" href="index.html">Home</a>
+          <a class="menu__link menu__link--active" href="proyectos.html"
+            >Proyectos</a
+          >
+          <a class="menu__link" href="evaluacion.html">Evaluación</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page">
+      <section class="panel" data-collapsible="true" data-collapsed-default="true">
+        <header class="panel__header">
+          <div>
+            <h1 class="page-title">Filtros rápidos</h1>
+            <p class="panel__subtitle">
+              Filtra por precio, ciudad, estrato, tipo, estado de obra o texto libre.
+            </p>
+          </div>
+          <button
+            type="button"
+            class="collapse-toggle"
+            aria-expanded="false"
+            aria-controls="filters-panel-body"
+          >
+            Mostrar filtros
+          </button>
+        </header>
+
+        <div class="panel__body panel__body--collapsed" id="filters-panel-body">
+          <form id="filters-form" class="form-grid">
+            <div class="form-group">
+              <label for="filter-texto">Buscar por nombre, ciudad o sector</label>
+              <input
+                type="text"
+                id="filter-texto"
+                placeholder="Ej: Envigado, Poblado, Tierra Grata..."
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Rango de precio (millones)</label>
+              <div class="range-group">
+                <input
+                  type="number"
+                  id="filter-precio-min"
+                  min="0"
+                  step="10"
+                  placeholder="Mín"
+                />
+                <span class="range-separator">a</span>
+                <input
+                  type="number"
+                  id="filter-precio-max"
+                  min="0"
+                  step="10"
+                  placeholder="Máx"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="filter-ciudad">Ciudad</label>
+              <select id="filter-ciudad">
+                <option value="">Todas</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="filter-estrato">Estrato</label>
+              <select id="filter-estrato">
+                <option value="">Todos</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="filter-tipo">Tipo de inmueble</label>
+              <select id="filter-tipo">
+                <option value="">Todos</option>
+                <option value="Apartamento">Apartamento</option>
+                <option value="Casa">Casa</option>
+                <option value="Lote">Lote</option>
+                <option value="Apartaestudio">Apartaestudio</option>
+                <option value="Aparta suite">Aparta suite</option>
+                <option value="Oficina">Oficina</option>
+                <option value="Consultorio">Consultorio</option>
+                <option value="Hotel">Hotel</option>
+                <option value="Local comercial">Local comercial</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="filter-estado-obra">Estado de obra</label>
+              <select id="filter-estado-obra">
+                <option value="">Cualquiera</option>
+                <option value="Sobre planos">Sobre planos</option>
+                <option value="En construcción">En construcción</option>
+                <option value="Terminado">Terminado</option>
+                <option value="En lanzamiento">En lanzamiento</option>
+              </select>
+            </div>
+
+            <div class="form-group form-group--checkbox">
+              <label>
+                <input type="checkbox" id="filter-solo-interes" />
+                Ver solo proyectos que siguen en análisis (interés final)
+              </label>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn--primary">Aplicar filtros</button>
+              <button type="button" id="btn-reset-filtros" class="btn btn--ghost">
+                Limpiar
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="panel" data-collapsible="true" data-collapsed-default="false">
+        <header class="panel__header">
+          <div>
+            <h1 class="page-title">Listado de proyectos</h1>
+            <p class="panel__subtitle">
+              Ordena por precio o puntuación y abre el link del proyecto cuando exista.
+            </p>
+          </div>
+          <div class="panel__header-actions">
+            <label for="sort-select" class="sr-only">Ordenar por</label>
+            <select id="sort-select" class="sort-select">
+              <option value="nombre_asc">Nombre (A-Z)</option>
+              <option value="precio_desde_asc">Precio desde (menor a mayor)</option>
+              <option value="precio_desde_desc">Precio desde (mayor a menor)</option>
+              <option value="puntuacion_desc">Puntuación (mayor a menor)</option>
+              <option value="ciudad_asc">Ciudad (A-Z)</option>
+            </select>
+          </div>
+        </header>
+        <div class="panel__body" id="projects-panel-body">
+          <div id="projects-summary" class="projects-summary"></div>
+
+          <div class="table-wrapper">
+            <table class="projects-table" id="projects-table">
+              <thead>
+                <tr>
+                  <th data-sort="nombre" style="cursor: pointer">Proyecto</th>
+                  <th data-sort="ciudad" style="cursor: pointer">Ciudad / Sector</th>
+                  <th data-sort="tipo" style="cursor: pointer">Tipo</th>
+                  <th data-sort="estrato" style="cursor: pointer">Estrato</th>
+                  <th data-sort="area" style="cursor: pointer">Área (m²)</th>
+                  <th data-sort="precio" style="cursor: pointer">Precio (M)</th>
+                  <th data-sort="estado" style="cursor: pointer">Estado</th>
+                  <th data-sort="puntuacion" style="cursor: pointer">Promedio</th>
+                  <th data-sort="interes" style="cursor: pointer">Interés</th>
+                  <th data-sort="visita" style="cursor: pointer">Visita</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="projects-tbody"></tbody>
+            </table>
+          </div>
+
+          <div id="no-results" class="no-results hidden">
+            No hay proyectos que cumplan con los filtros seleccionados.
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer"></footer>
+
+    <script src="js/config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
+
